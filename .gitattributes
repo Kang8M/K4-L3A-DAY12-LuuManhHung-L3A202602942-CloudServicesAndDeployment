@@ -1,0 +1,5 @@
+# Tool-generated lock files phải giữ nguyên LF trên mọi hệ điều hành,
+# tránh git tự đổi sang CRLF trên Windows (autocrlf=true) gây diff giả
+# và không nhất quán line-ending giữa các máy.
+uv.lock text eol=lf
+*.lock text eol=lf
