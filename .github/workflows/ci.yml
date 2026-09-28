@@ -44,6 +44,11 @@ jobs:
         run: npm install -g @railway/cli
 
       - name: Deploy
+        # Service `day12-agent` đã kết nối trực tiếp với repo GitHub này trên
+        # Railway. `redeploy --from-source` yêu cầu Railway build lại commit
+        # mới nhất từ nguồn đã cấu hình sẵn, thay vì nén và tải cả source code
+        # lên qua CLI như `railway up` — cách đó từng bị timeout trên GitHub
+        # Actions runner khi gọi API backboard.railway.com.
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        run: railway up --service day12-agent --ci
+        run: railway redeploy --service day12-agent --from-source --yes
